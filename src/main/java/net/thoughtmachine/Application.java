@@ -15,6 +15,7 @@ public class Application {
   private InputParser parser;
 
   private Board board = null;
+  private boolean boatInitDone = false;
 
 
 
@@ -65,5 +66,13 @@ public class Application {
 
   public void setBoard(Board board) {
     this.board = board;
+  }
+
+  public boolean isBoatInitDone() {
+    return boatInitDone;
+  }
+
+  public void setBoatInitDone(boolean boatInitDone) {
+    this.boatInitDone = boatInitDone;
   }
 }

@@ -13,6 +13,7 @@ public class InitBoardCommand extends AbstractCommand {
     private int boardSize;
 
     public InitBoardCommand(String size){
+        super(size);
         this.boardSize = Integer.parseInt(size);
     }
 
@@ -23,5 +24,10 @@ public class InitBoardCommand extends AbstractCommand {
             return true;
         }
         throw new IllegalCommandException("Can not init the board, board already exists !");
+    }
+
+    @Override
+    public String toString() {
+        return "Command INIT_BOARD with " + boardSize + "x" + boardSize + " board";
     }
 }
