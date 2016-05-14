@@ -18,11 +18,18 @@ public enum Direction {
 
     public static Direction findDirectionByString(String ref){
         for(Direction direction : Direction.values()){
-            System.out.println(direction.getDirection() + " " + ref.length());
             if(direction.getDirection().equals(ref)){
                 return direction;
             }
         }
         return null;
+    }
+
+    public static Direction getLeftDirection(Direction direction) {
+        return Direction.values()[(direction.ordinal() - 1) % 4];
+    }
+
+    public static Direction getRightDirection(Direction direction) {
+        return Direction.values()[(direction.ordinal() + 1) % 4];
     }
 }

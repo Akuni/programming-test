@@ -7,15 +7,13 @@ import net.thoughtmachine.exception.MalformedCommand;
 import net.thoughtmachine.io.InputParser;
 import net.thoughtmachine.io.TextInputParser;
 
-import java.io.*;
 
 public class Application {
 
-  private static final String input = "/input.txt";
+
   private InputParser parser;
 
   private Board board = null;
-  private boolean boatInitDone = false;
 
 
 
@@ -23,30 +21,13 @@ public class Application {
     this.parser = parser;
   }
 
-  public void loadInput() {
-    InputStream is = getClass().getResourceAsStream(input);
-    BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-    try {
-      String line;
-      while ((line = reader.readLine()) != null) {
-        System.out.println(line);
-      }
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-  }
 
   public void run(){
-    String commandLine;
-    /*while((commandLine = parser.getCommandLine()) != null){
-      System.out.println(commandLine);
-    }*/
     AbstractCommand command;
     try {
       while((command = parser.getCommand()) != null){
-        System.out.println(command);
         command.process(this);
+        System.out.println(command);
       }
     } catch (MalformedCommand malformedCommand) {
       malformedCommand.printStackTrace();
@@ -55,10 +36,6 @@ public class Application {
     }
   }
 
-  public static void main(String... args) {
-    Application app = new Application(new TextInputParser("/input.txt"));
-    app.run();
-  }
 
   public Board getBoard() {
     return board;
@@ -68,11 +45,20 @@ public class Application {
     this.board = board;
   }
 
-  public boolean isBoatInitDone() {
-    return boatInitDone;
+
+
+  public boolean isBoatInitDone(){
+    return getBoard().isBoatInitDone();
   }
 
-  public void setBoatInitDone(boolean boatInitDone) {
-    this.boatInitDone = boatInitDone;
+  public void setBoatInitDone(){
+    getBoard().setBoatInitDone(true);
+  }
+
+
+
+  public static void main(String... args) {
+    Application app = new Application(new TextInputParser("/input.txt"));
+    app.run();
   }
 }

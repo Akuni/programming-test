@@ -32,7 +32,7 @@ public class InitBoatCommand extends AbstractCommand{
         }
 
         // TODO faire dans Application.java ?
-        application.setBoatInitDone(true);
+        application.setBoatInitDone();
         return true;
     }
 
@@ -40,10 +40,6 @@ public class InitBoatCommand extends AbstractCommand{
 
     @Override
     public String toString() {
-        String res = "";
-        for(String s : boats){
-            res += s + "\n";
-        }
-        return res;
+        return "Initializing boats with " + initialCommand;
     }
 }
