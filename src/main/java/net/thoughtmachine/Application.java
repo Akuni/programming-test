@@ -27,13 +27,13 @@ public class Application {
     try {
       while((command = parser.getCommand()) != null){
         command.process(this);
-        System.out.println(command);
       }
     } catch (MalformedCommand malformedCommand) {
       malformedCommand.printStackTrace();
     } catch (IllegalCommandException e) {
       e.printStackTrace();
     }
+    board.printResult();
   }
 
 
