@@ -99,17 +99,17 @@ public class Board {
     }
 
     // test purpose
-    protected int getBoardSize(){
+    public int getBoardSize(){
         return this.boardSize;
     }
 
     // test purpose
-    protected List<Boat> getFloatingBoats(){
+    public List<Boat> getFloatingBoats(){
         return this.floatingBoats;
     }
 
     // test purpose
-    protected List<Boat> getSunkBoats(){
+    public List<Boat> getSunkBoats(){
         return this.sunkBoats;
     }
 
