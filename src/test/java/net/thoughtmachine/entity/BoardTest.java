@@ -152,7 +152,7 @@ public class BoardTest {
     }
 
     @Test(expected = MalformedCommand.class)
-    public void testAttackBoatFailNoBoat() throws MalformedCommand, IllegalCommandException {
+    public void testAttackBoatFailMalformed() throws MalformedCommand, IllegalCommandException {
         board.placeBoat("1","2","E");
         board.placeBoat("6","6","S");
 
