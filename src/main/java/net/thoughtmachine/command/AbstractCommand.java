@@ -1,6 +1,7 @@
 package net.thoughtmachine.command;
 
 import net.thoughtmachine.Application;
+import net.thoughtmachine.entity.Board;
 import net.thoughtmachine.exception.IllegalCommandException;
 import net.thoughtmachine.exception.MalformedCommand;
 
@@ -15,5 +16,5 @@ public abstract class AbstractCommand {
         this.initialCommand = initialCommand;
     }
 
-    public abstract boolean process(Application application) throws IllegalCommandException, MalformedCommand;
+    public abstract boolean process(Application application, Board board) throws IllegalCommandException, MalformedCommand;
 }
