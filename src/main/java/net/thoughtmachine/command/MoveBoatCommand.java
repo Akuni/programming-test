@@ -1,6 +1,7 @@
 package net.thoughtmachine.command;
 
 import net.thoughtmachine.Application;
+import net.thoughtmachine.entity.Board;
 import net.thoughtmachine.exception.IllegalCommandException;
 import net.thoughtmachine.exception.MalformedCommand;
 
@@ -18,7 +19,9 @@ public class MoveBoatCommand extends AbstractCommand {
     }
 
     @Override
-    public boolean process(Application application) throws MalformedCommand, IllegalCommandException {
+    public boolean process(Application application, Board board) throws MalformedCommand, IllegalCommandException {
+        if(board == null)
+            throw new IllegalCommandException("Can not move a boat, the board is not initialized yet !");
         String[] values = initialCommand.split("\\)");
         // check number of argument
         if(values.length != 2)
@@ -40,15 +43,15 @@ public class MoveBoatCommand extends AbstractCommand {
         for(char c : values[1].toCharArray()){
             switch (c){
                 case 'M':
-                    String[] res = application.getBoard().moveBoat(boatCoordinates[0], boatCoordinates[1]);
+                    String[] res = board.moveBoat(boatCoordinates[0], boatCoordinates[1]);
                     boatCoordinates[0] = res[0];
                     boatCoordinates[1] = res[1];
                     break;
                 case 'L':
-                    application.getBoard().turnBoatLeft(boatCoordinates[0], boatCoordinates[1]);
+                    board.turnBoatLeft(boatCoordinates[0], boatCoordinates[1]);
                     break;
                 case 'R':
-                    application.getBoard().turnBoatRight(boatCoordinates[0], boatCoordinates[1]);
+                    board.turnBoatRight(boatCoordinates[0], boatCoordinates[1]);
                     break;
                 default:
                     throw new MalformedCommand("To move a boat only M, L, and R are accepted ");
