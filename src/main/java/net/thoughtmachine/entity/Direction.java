@@ -26,7 +26,7 @@ public enum Direction {
     }
 
     public static Direction getLeftDirection(Direction direction) {
-        return Direction.values()[(direction.ordinal() - 1) % 4];
+        return Direction.values()[(direction.ordinal() + 3) % 4];
     }
 
     public static Direction getRightDirection(Direction direction) {
