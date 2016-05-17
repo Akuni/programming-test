@@ -1,6 +1,7 @@
 package net.thoughtmachine.command;
 
 import net.thoughtmachine.Application;
+import net.thoughtmachine.entity.Board;
 import net.thoughtmachine.exception.IllegalCommandException;
 import net.thoughtmachine.exception.MalformedCommand;
 
@@ -17,8 +18,11 @@ public class InitBoatCommand extends AbstractCommand{
     }
 
     @Override
-    public boolean process(Application application) throws IllegalCommandException, MalformedCommand {
-        if(application.isBoatInitDone()){
+    public boolean process(Application application, Board board) throws IllegalCommandException, MalformedCommand {
+        if(board == null)
+            throw new IllegalCommandException("Can not add boat, the board is not initialized yet !");
+
+        if(board.isBoatInitDone()){
             throw new IllegalCommandException("Boats are already on the board, can not add new boat !");
         }
 
@@ -28,11 +32,10 @@ public class InitBoatCommand extends AbstractCommand{
             String[] values = s.split(",");
             if(values.length != 3)
                 throw new MalformedCommand("Boat initialisation requires 3 parameters : X, Y, and Direciton : " + initialCommand);
-            application.getBoard().placeBoat(values[0], values[1], values[2]);
+            board.placeBoat(values[0], values[1], values[2]);
         }
 
-        // TODO faire dans Application.java ?
-        application.setBoatInitDone();
+        board.setBoatInitDone(true);
         return true;
     }
 
