@@ -7,6 +7,6 @@ public class ApplicationTest {
 
   @Test
   public void test() {
-    //Assert.fail();
+    Assert.fail();
   }
 }

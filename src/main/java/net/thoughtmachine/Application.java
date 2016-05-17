@@ -10,23 +10,20 @@ import net.thoughtmachine.io.TextInputParser;
 
 public class Application {
 
-
   private InputParser parser;
 
   private Board board = null;
-
 
 
   public Application(InputParser parser){
     this.parser = parser;
   }
 
-
   public void run(){
     AbstractCommand command;
     try {
       while((command = parser.getCommand()) != null){
-        command.process(this);
+        command.process(this, this.board);
       }
     } catch (MalformedCommand malformedCommand) {
       malformedCommand.printStackTrace();
@@ -36,29 +33,16 @@ public class Application {
     board.printResult();
   }
 
-
-  public Board getBoard() {
-    return board;
-  }
-
   public void setBoard(Board board) {
     this.board = board;
   }
 
-
-
-  public boolean isBoatInitDone(){
-    return getBoard().isBoatInitDone();
-  }
-
-  public void setBoatInitDone(){
-    getBoard().setBoatInitDone(true);
-  }
-
-
-
   public static void main(String... args) {
     Application app = new Application(new TextInputParser("/input.txt"));
     app.run();
+  }
+
+  public Board getBoard(){
+    return board;
   }
 }
