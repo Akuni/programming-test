@@ -26,19 +26,19 @@ To develop a solution to this project, I started by wondering what were the elem
 ![alt text](https://github.com/Akuni/programming-test/blob/master/.readme_images/board.png?raw=true "Board")
 * `Boat` : Since we use a List of Boat and not a Map of Map (for instance) the coordinates of a give boat is not implied by its position is the datastructure. Therefore the Boat has to know its coordinates. The Boat also carry the information of its direction.
 
-![alt text](https://github.com/Akuni/programming-test/tree/master/.readme_images/boat.png?raw=true "Boat")
+![alt text](https://github.com/Akuni/programming-test/blob/master/.readme_images/boat.png?raw=true "Boat")
 * `Direction` :
 To simplify things and because there are only four possibilities Direction is an Enum  with containing NORTH, EAST, SOUTH, and WEST. 
 
-![alt text](https://github.com/Akuni/programming-test/.readme_images/direction.png?raw=true "Direction")
+![alt text](https://github.com/Akuni/programming-test/blob/master/.readme_images/direction.png?raw=true "Direction")
 ### io
 To easily manage the input and output operation I created two interfaces `InputParser` and `OutputWriter` and only contain the methods getCommand or write to implement to read or write new datas.
 
-![alt text](https://github.com/Akuni/programming-test/tree/master/.readme_images/reader_writer.png?raw=true "Reader & Writer")
+![alt text](https://github.com/Akuni/programming-test/blob/master/.readme_images/reader_writer.png?raw=true "Reader & Writer")
 
 ### command
 I implemented the Command Pattern to have a uniform way to process them. That's why I made an `AbstractCommand` that only contains the initial command as a String and the method process which is implemented in all sub-classes.
-![alt text](https://github.com/Akuni/programming-test/tree/master/.readme_images/command.png?raw=true "Commands")
+![alt text](https://github.com/Akuni/programming-test/blob/master/.readme_images/command.png?raw=true "Commands")
 
 ---
 ## Team
