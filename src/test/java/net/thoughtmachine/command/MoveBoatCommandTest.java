@@ -7,6 +7,7 @@ import net.thoughtmachine.entity.Direction;
 import net.thoughtmachine.exception.IllegalCommandException;
 import net.thoughtmachine.exception.MalformedCommand;
 import net.thoughtmachine.io.TextInputParser;
+import net.thoughtmachine.io.TextOutputWriter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +23,7 @@ public class MoveBoatCommandTest {
 
     @Before
     public void init(){
-        this.application = new Application(new TextInputParser(""));
+        this.application = new Application(new TextInputParser(""), new TextOutputWriter(""));
         // init board to 10x10
         application.setBoard(new Board(10));
         // add a boat at (2,2) facing north

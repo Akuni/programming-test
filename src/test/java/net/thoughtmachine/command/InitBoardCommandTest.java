@@ -5,6 +5,7 @@ import net.thoughtmachine.entity.Board;
 import net.thoughtmachine.exception.IllegalCommandException;
 import net.thoughtmachine.exception.MalformedCommand;
 import net.thoughtmachine.io.TextInputParser;
+import net.thoughtmachine.io.TextOutputWriter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class InitBoardCommandTest {
 
     @Before
     public void init(){
-        this.application = new Application(new TextInputParser(""));
+        this.application = new Application(new TextInputParser(""), new TextOutputWriter(""));
     }
 
     @Test
